@@ -1,0 +1,222 @@
+{
+	"info": {
+		"_postman_id": "eade83be-f7a1-42b6-9c64-cd1b0944f9de",
+		"name": "Live Server (localhost)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19437527"
+	},
+	"item": [
+		{
+			"name": "Get All Member",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Api-Key",
+						"value": "{{X-Api-Key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/team_members",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"team_members"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Team Member",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Created Successfully\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"name\": \"Mrunal Vartak\",\r\n        \"age\": 23,\r\n        \"City\": \"Indore\",\r\n        \"Designation\": \"SE\",\r\n        \"Company\": \"IMPETUS\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/team_members",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"team_members"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Member (All details)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Updated Successfully\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n         \"id\":5,\r\n        \"Designation\": \"Software Engineer\",\r\n        \"Company\": \"IMPETUS\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/team_members/5",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"team_members",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Member (Partial details)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Updated Successfully\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"id\": 5,\r\n        \"fullname\": \"Mrunal Vartakk\",\r\n        \"age\": 27,\r\n        \"City\": \"Pune MH\",\r\n        \"Designation\": \"Senior Software Engineer\",\r\n        \"Company\": \"IMPETUS Tech\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/team_members/5",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"team_members",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Member",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"deleted successfully\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/team_members/5",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"team_members",
+						"5"
+					]
+				},
+				"description": "With this API we will remove any team member from group"
+			},
+			"response": []
+		}
+	]
+}
